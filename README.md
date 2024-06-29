@@ -855,7 +855,7 @@ Certain directories on the file system are indexed for search features in Window
   ```
 
 > [!IMPORTANT]
-> To prevent unexpected breakage and problems due to dependency errors, assess the other services that depend on the service you want to disable. This is shown in the ``Properties -> Dependencies`` for the service you want to disable by typing ``services.msc`` in ``Win+R``. The box that is titled "*the following system components depend on this service*" describes the services that rely on the service you want to disable. To avoid dependency errors, the services in this box should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
+> To prevent unexpected breakage and problems due to service dependency errors, assess the other services that depend on the service you want to disable. This is shown in the ``Properties -> Dependencies`` for the service you want to disable by typing ``services.msc`` in ``Win+R``. The box that is titled "*the following system components depend on this service*" describes the services that rely on the service you want to disable. To avoid dependency errors, the services in this box should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
 
 ## 11.8. Time, Language and Region
 
@@ -922,7 +922,7 @@ If a HDD isn't present in the system then Superfetch and Prefetch can be disable
   ```
 
 > [!IMPORTANT]
-> To prevent unexpected breakage and problems due to dependency errors, assess the other services that depend on the service you want to disable. This is shown in the ``Properties -> Dependencies`` for the service you want to disable by typing ``services.msc`` in ``Win+R``. The box that is titled "*the following system components depend on this service*" describes the services that rely on the service you want to disable. To avoid dependency errors, the services in this box should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
+> To prevent unexpected breakage and problems due to service dependency errors, assess the other services that depend on the service you want to disable. This is shown in the ``Properties -> Dependencies`` for the service you want to disable by typing ``services.msc`` in ``Win+R``. The box that is titled "*the following system components depend on this service*" describes the services that rely on the service you want to disable. To avoid dependency errors, the services in this box should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
 
 ## 11.15. Operating System and Partition Name
 
@@ -992,15 +992,8 @@ I heavily discourage running debloating scripts or removing components other tha
 
   - In the start menu, *uninstall* any residual links for applications. Keep in mind that these applications aren't actually installed, they get installed only if the user clicks on them so do not accidentally click on them
 
-  - Windows 10 Only:
-
-    - Uninstall bloatware in ``Apps -> Apps and Features`` by pressing ``Win+I`` (this can also be managed in [AppxPackagesManager](https://github.com/valleyofdoom/AppxPackagesManager))
-    - In the ``Optional features`` section, you can uninstall everything that you don't need if desired
-
-  - Windows 11 Only:
-
-    - Uninstall bloatware in ``Apps -> Installed apps`` by pressing ``Win+I`` (this can also be managed in [AppxPackagesManager](https://github.com/valleyofdoom/AppxPackagesManager))
-    - In the ``System -> Optional features`` section, you can uninstall everything that you don't need if desired
+  - Uninstall bloatware in the applications section in the immersive control panel by pressing ``Win+I`` (this can also be managed in [AppxPackagesManager](https://github.com/valleyofdoom/AppxPackagesManager))
+  - In the ``Optional features`` section within the immersive control panel, you can uninstall everything that you don't need if desired
 
 - If Windows Defender was disabled in section [11.4. Merging Registry Options](#114-merging-registry-options),``smartscreen.exe`` ignores the registry key that controls whether it runs in the background persistently on later versions of Windows. For this reason, open CMD as TrustedInstaller with ``C:\bin\MinSudo.exe --TrustedInstaller --Privileged`` and enter the command below to prevent it running in the background
 
@@ -1329,7 +1322,7 @@ Message signaled interrupts (MSIs) are faster than traditional line-based interr
     ```
 
 > [!IMPORTANT]
-> To prevent unexpected breakage and problems due to dependency errors, assess the other services that depend on the service you want to disable. This can be achieved by pressing ``Ctrl+F`` and searching for the service that you want to disable in the ``Dependencies`` column which will tell you whether any services depend on the one you want to disable (the one you are searching for). These services should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
+> To prevent unexpected breakage and problems due to service dependency errors, assess the other services that depend on the service you want to disable. This can be achieved by pressing ``Ctrl+F`` and searching for the service that you want to disable in the ``Dependencies`` column which will tell you whether any services depend on the one you want to disable (the one you are searching for). These services should also be disabled. If you can't disable them (e.g. because you need them), then you have no choice but to leave the service you wanted to disable initially enabled.
 
 ## 11.38. XHCI Interrupt Moderation (IMOD)
 
@@ -1379,7 +1372,7 @@ It isn't a bad idea to skim through both the legacy and immersive control panel 
 > [!CAUTION]
 > 📊 **Do NOT** blindly follow the recommendations in this section. **Do** benchmark the specified changes to ensure they result in positive performance scaling, as every system behaves differently and changes could unintentionally degrade performance ([instructions](#3-benchmarking)).
 
-- Cap your framerate at a multiple of your monitor refresh rate ([calculator](https://boringboredom.github.io/tools/fpscapcalculator)) to prevent frame mistiming and a rolling tearline ([1](https://www.youtube.com/watch?v=_73gFgNrYVQ), [2](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/peripherals/mistiming/mistiming.md))
+- Cap your framerate at a multiple of your monitor refresh rate ([calculator](https://boringboredom.github.io/tools/fpscapcalculator)) to prevent frame mistiming and a rolling tearline ([1](https://www.youtube.com/watch?v=_73gFgNrYVQ), [2](https://github.com/BoringBoredom/PC-Optimization-Hub/blob/main/content/peripherals/mistiming/mistiming.md)). Reducing your refresh rate to avoid mismatching is also applicable ([instructions](https://forums.blurbusters.com/viewtopic.php?t=8946))
 
 - Ensure that the GPU isn't fully utilized as lower GPU utilization reduces system latency ([1](https://www.youtube.com/watch?v=8ZRuFaFZh5M&t=859s), [2](https://www.youtube.com/watch?v=7CKnJ5ujL_Q))
 
@@ -1492,7 +1485,7 @@ There are several methods to set affinities for processes. One of which is Task 
 
   - [Process Hacker](https://processhacker.sourceforge.io) and [WindowsD](https://github.com/katlogic/WindowsD) can bypass several process-level protections through exploits but is not advised as they interfere with anticheats
 
-- It may be worth benchmarking the performance scaling of your application against core count as it may behave differently due to poor scheduling implementations from the application and/or OS. In some cases, it is possible that the application may perform better with fewer cores assigned to it via an affinity mask ([1](https://developer.nvidia.com/blog/limiting-cpu-threads-for-better-game-performance)). This will also give you a rough idea as to how many cores you can reserve with ReservedCpuSets
+- It may be worth benchmarking the performance scaling of your application against core count as it may behave differently due to poor scheduling implementations from the application and/or OS. In some cases, it is possible that the application may perform better with fewer cores assigned to it via an affinity mask ([1](https://developer.nvidia.com/blog/limiting-cpu-threads-for-better-game-performance)). This will also give you a rough idea as to how many cores you can reserve. In other cases, it can severely harm performance as there is a potential for the game to create more worker threads than CPUs due to the game only considering the amount of physical cores available hence, it is vital that performance scaling is measured
 
 ### 11.42.1. Starting a Process with a Specified Affinity Mask
 
